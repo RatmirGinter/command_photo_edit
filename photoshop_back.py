@@ -92,13 +92,26 @@ class Black_and_White(Photo_filter):
             "Переводит вашу картинку в изображение из двух цветов: чёрного и белого. \n"
             "Явный закос под стиль в искусстве 19 века.."
         )
-class SepiaFilter(Filter):
+    def filter(self, img: Image.Image) -> Image.Image:
+        img = img.convert("1")
+        return img
+
+
+class SepiaFilter(Photo_filter):
+    def __init__(self):
+        super().__init__(
+            "Sepia",
+            "Что-то делает..."
+        )
     def apply_to_pixel(self, r, g, b):
         r = int((r * 0.393) + (g * 0.769) + (b * 0.189))
         g = int((r * 0.349) + (g * 0.686) + (b * 0.168))
         b = int((r * 0.272) + (g * 0.534) + (b * 0.131))
         return r, g, b
+
     def filter(self, img: Image.Image) -> Image.Image:
-        img = img.convert("1")
-        return img
+        for i in range(img.height):
+            for j in range(img.width):
+                r, g, b = self.apply_to_pixel(img.getpixel((i, j))
+                img.putpixel((i, j), (r, g, b))
 
