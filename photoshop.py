@@ -36,6 +36,7 @@ def choice():
     print("2: Фильтр 'По квадратам'")
     print("3: Инверсия")
     print("4: Чёрно-белый пуантилизм")
+    print("5: SepiaFilter")
     print("0: Выход")
     print()
     start_choice = input("Выберите фильтр (или 0 для выхода): ")
@@ -52,6 +53,8 @@ def choice():
         obj = photoshop_back.Inversion()
     elif start_choice == "4":
         obj = photoshop_back.Black_and_White()
+    elif start_choice == "5":
+        obj = photoshop_back.SepiaFilter()
     else:
         print()
         print("Некорректный ввод")

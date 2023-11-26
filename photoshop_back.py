@@ -112,6 +112,8 @@ class SepiaFilter(Photo_filter):
     def filter(self, img: Image.Image) -> Image.Image:
         for i in range(img.height):
             for j in range(img.width):
-                r, g, b = self.apply_to_pixel(img.getpixel((i, j))
-                img.putpixel((i, j), (r, g, b))
+                r, g, b = img.getpixel((i, j))
+                nr, ng, nb = self.apply_to_pixel(r, g, b)
+                img.putpixel((i, j), (nr, ng, nb))
+        return img
 
